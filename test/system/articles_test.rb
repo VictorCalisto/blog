@@ -15,6 +15,7 @@ class ArticlesTest < ApplicationSystemTestCase
     click_on "New article"
 
     fill_in "Body", with: @article.body
+    fill_in "Publication date", with: @article.publication_date
     fill_in "Title", with: @article.title
     click_on "Create Article"
 
@@ -27,6 +28,7 @@ class ArticlesTest < ApplicationSystemTestCase
     click_on "Edit this article", match: :first
 
     fill_in "Body", with: @article.body
+    fill_in "Publication date", with: @article.publication_date
     fill_in "Title", with: @article.title
     click_on "Update Article"
 
