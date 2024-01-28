@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
+    @article.publication_date=Date.today # Define a data de publicação como a data atual
 
     respond_to do |format|
       if @article.save
@@ -66,6 +67,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :body, :publication_date)
+      params.require(:article).permit(:title, :body, :publication_date,:category_id)
     end
 end
