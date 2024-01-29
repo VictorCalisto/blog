@@ -18,10 +18,12 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /articles or /articles.json
   def create
+    @categories = Category.all
     @article = Article.new(article_params)
     @article.publication_date=Date.today # Define a data de publicação como a data atual
 
@@ -40,6 +42,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
+        @article.update(edit_date: Date.today) # Denife a data de edição como a data atual
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
         format.json { render :show, status: :ok, location: @article }
       else

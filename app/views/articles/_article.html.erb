@@ -14,4 +14,12 @@
     <%= article.publication_date %>
   </p>
 
+<% if article.edit_date.present? %>
+  <p>
+    <strong>Edit date:</strong>
+    <%= article.edit_date %>
+  </p>
+<% end %>
+
+
 </div>
