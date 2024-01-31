@@ -5,21 +5,22 @@
   </p>
 
   <p>
-    <strong>Body:</strong>
-    <%= article.body %>
-  </p>
-
-  <p>
     <strong>Publication date:</strong>
-    <%= article.publication_date %>
+    <%= format_brazil(article.publication_date) %>
   </p>
 
 <% if article.edit_date.present? %>
   <p>
     <strong>Edit date:</strong>
-    <%= article.edit_date %>
+    <%= format_brazil(article.edit_date) %>
   </p>
 <% end %>
+
+  <p>
+    <strong>Body:</strong>
+    <%= truncate(article.body, length: 150) %>
+  </p>
+
 
 
 </div>

@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :set_categories
 
   # GET /articles or /articles.json
   def index
@@ -13,17 +14,14 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
-    @categories = Category.all
   end
 
   # GET /articles/1/edit
   def edit
-    @categories = Category.all
   end
 
   # POST /articles or /articles.json
   def create
-    @categories = Category.all
     @article = Article.new(article_params)
     @article.publication_date=Date.today # Define a data de publicação como a data atual
 
@@ -67,7 +65,9 @@ class ArticlesController < ApplicationController
     def set_article
       @article = Article.find(params[:id])
     end
-
+    def set_categories
+      @categories = Category.all
+    end
     # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :body, :publication_date,:category_id)
